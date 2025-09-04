@@ -5,11 +5,11 @@ Stroople is a simple game where you get points for clicking certain shapes and c
 local success = love.window.setMode( 600, 600 )
 
 function love.load()
-    changeSceneTo("start")
+    changeSceneTo("game") --just for debugging. Change to "start" for real game
 end
 
 function love.update(dt)
-    if Scene.update then Scene:update() end
+    if Scene.update then Scene:update(dt) end
 end
 
 function love.draw()

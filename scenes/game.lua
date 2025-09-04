@@ -17,7 +17,9 @@ local shapes = {"square", "circle"}
 local score = 0
 local timer = 90
 local lives = 3
-local rule = "Green Circle is target"
+local roundTimer = 10
+
+local rule = {}
 
 
 -- Fonts
@@ -50,17 +52,43 @@ function Game:load()
             item.age = 0
             item.isTarget = false
             item.size = itemSize
+            item.lifespan = math.random(9,12)
 
             table.insert(items, item)
         end
     end
 
-    -- fonts
-    
+    -- load up random rule
+    rule.color = colorKeys[math.random(#colorKeys)]
+    rule.shape = shapes[math.random(#shapes)]
+    rule.text = rule.color.." "..rule.shape.." is target"
 
 end
 
 function Game:update(dt)
+    timer = timer - 1 * dt
+    roundTimer = roundTimer - 1 * dt
+
+    -- Kill and spawn items once they age out
+    for idx, item in pairs(items) do
+        item.age = item.age + 1*dt
+
+        if item.age > item.lifespan then
+            -- reset color and shape
+            item.color = colors[colorKeys[math.random(#colorKeys)]]
+            item.shape = shapes[math.random(#shapes)]
+            item.lifespan = math.random(9,12)
+            item.age = 0
+        end
+    end
+
+    if roundTimer < 0 then
+        rule.color = colorKeys[math.random(#colorKeys)]
+        rule.shape = shapes[math.random(#shapes)]
+        rule.text = rule.color.." "..rule.shape.." is target"
+        roundTimer = 10
+    end
+
 end
 
 function Game:draw(dt)
@@ -84,7 +112,7 @@ function Game:draw(dt)
     love.graphics.print("Lives: "..lives, love.graphics.getWidth() - livesFont:getWidth("Lives: "..lives)-10, 10)
 
     love.graphics.setFont(ruleFont)
-    love.graphics.print("RULE: "..rule, love.graphics.getWidth()/2 - ruleFont:getWidth("RULE: "..rule)/2, love.graphics.getHeight() - (ruleFont:getHeight() + 10)  )
+    love.graphics.print("RULE: "..rule.text, love.graphics.getWidth()/2 - ruleFont:getWidth("RULE: "..rule.text)/2, love.graphics.getHeight() - (ruleFont:getHeight() + 10)  )
 end
 
 function Game:keypressed( key, scancode, isrepeat )
@@ -92,5 +120,6 @@ function Game:keypressed( key, scancode, isrepeat )
         changeSceneTo('end')
     end
 end
+
 
 return Game
