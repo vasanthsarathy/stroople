@@ -2,7 +2,7 @@ local Start = {}
 local sw = love.graphics.getWidth()
 local sh = love.graphics.getHeight()
 
-function Start:load()
+function Start:load(state)
     titleFont = love.graphics.newFont(50)
     instructFont = love.graphics.newFont(20, "light")
 end
@@ -19,7 +19,7 @@ function Start:draw(dt)
     love.graphics.print(instruction,  sw/2 - instructFont:getWidth(instruction)/2, 400)
 end
 
-function Start:keypressed( key, scancode, isrepeat )
+function Start:keypressed(state, key, scancode, isrepeat )
     if key == "space" then
         changeSceneTo("game")
     end
