@@ -14,6 +14,18 @@ local colors = require('colors')
 local colorKeys = {"red", "green"}
 local shapes = {"square", "circle"}
 
+local score = 0
+local timer = 90
+local lives = 3
+local rule = "Green Circle is target"
+
+
+-- Fonts
+local scoreFont = love.graphics.newFont(20)
+local timerFont = love.graphics.newFont(20)
+local livesFont = love.graphics.newFont(20)
+local ruleFont = love.graphics.newFont(20)
+
 -- LOAD METHOD
 function Game:load()
     local gridWidth = love.graphics.getWidth() - (padding * 2)
@@ -43,6 +55,9 @@ function Game:load()
         end
     end
 
+    -- fonts
+    
+
 end
 
 function Game:update(dt)
@@ -57,6 +72,19 @@ function Game:draw(dt)
             love.graphics.rectangle("fill",item.x, item.y, item.size, item.size)
         end
     end
+
+    -- HUD
+    love.graphics.setFont(scoreFont)
+    love.graphics.print("Score: "..score, love.graphics.getWidth()/2 - scoreFont:getWidth("Score: "..score)/2, 10)
+
+    love.graphics.setFont(timerFont)
+    love.graphics.print("Time: "..timer, 10, 10)
+
+    love.graphics.setFont(livesFont)
+    love.graphics.print("Lives: "..lives, love.graphics.getWidth() - livesFont:getWidth("Lives: "..lives)-10, 10)
+
+    love.graphics.setFont(ruleFont)
+    love.graphics.print("RULE: "..rule, love.graphics.getWidth()/2 - ruleFont:getWidth("RULE: "..rule)/2, love.graphics.getHeight() - (ruleFont:getHeight() + 10)  )
 end
 
 function Game:keypressed( key, scancode, isrepeat )
