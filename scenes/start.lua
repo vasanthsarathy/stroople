@@ -2,6 +2,8 @@ local Start = {}
 local sw = love.graphics.getWidth()
 local sh = love.graphics.getHeight()
 
+local colors = require('colors')
+
 function Start:load(state)
     titleFont = love.graphics.newFont(50)
     instructFont = love.graphics.newFont(20, "light")
@@ -11,6 +13,7 @@ function Start:update(dt)
 end
 
 function Start:draw(dt)
+    love.graphics.setColor(colors["white"])
     love.graphics.setFont(titleFont)
     love.graphics.print("STROOPLE", sw/2 - titleFont:getWidth("STROOPLE")/2, 200)
 

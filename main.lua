@@ -7,7 +7,7 @@ local success = love.window.setMode( 600, 600 )
 local state = {}
 
 function love.load()
-    changeSceneTo("game") --just for debugging. Change to "start" for real game
+    changeSceneTo("start") --just for debugging. Change to "start" for real game
 end
 
 function love.update(dt)
