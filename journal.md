@@ -2,7 +2,7 @@
 
 ## 09/05/2025
 - figured out how to visually show the aging of an item. -- maybe decrease the size in proportion to the age
-- fixing a bug -- my first click is always wrong for some reason 
+- fixing a bug -- my first click is always wrong for some reason - done
 - Ideas
     - sounds 
     - better scoring metric -- precision and recall. 

@@ -10,7 +10,7 @@ function End:update(state, dt)
 end
 
 function End:draw(state, dt)
-    love.graphics.setColor(colors["white"])
+    love.graphics.setColor(colors["slategrey"])
     love.graphics.setFont(endFont)
     love.graphics.print("GAME OVER!", love.graphics.getWidth()/2 -  endFont:getWidth("GAME OVER!")/2, 100)
 

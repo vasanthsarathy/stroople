@@ -3,8 +3,11 @@
 Stroople is a simple game where you get points for clicking certain shapes and colors based on a rule. More correct clicks = more points. Wrong clicks and you lose a life. Loose three lives and you lose game. You have 90 seconds! Oh and wait, the rule for what you can and cannot click changes every 10 seconds.
 ]]--
 local success = love.window.setMode( 600, 600 )
+local colors = require('colors')
 
 local state = {}
+
+love.graphics.setBackgroundColor(colors['white'])
 
 function love.load()
     changeSceneTo("start") --just for debugging. Change to "start" for real game

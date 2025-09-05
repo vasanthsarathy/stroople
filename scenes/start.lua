@@ -13,7 +13,7 @@ function Start:update(dt)
 end
 
 function Start:draw(dt)
-    love.graphics.setColor(colors["white"])
+    love.graphics.setColor(colors["slategrey"])
     love.graphics.setFont(titleFont)
     love.graphics.print("STROOPLE", sw/2 - titleFont:getWidth("STROOPLE")/2, 200)
 

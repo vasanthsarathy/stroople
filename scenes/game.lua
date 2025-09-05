@@ -14,7 +14,7 @@ local allowableWithin = 0.5 -- distance around item allowed to be considered wit
 -- Useful collections
 local items = {}
 local colors = require('colors')
-local colorKeys = {"red", "green", "blue"}
+local colorKeys = {"orangered", "seagreen", "skyblue"}
 local shapes = {"square", "circle"}
 
 -- Fonts
@@ -157,7 +157,7 @@ function Game:draw(state, dt)
         end
     end
 
-    love.graphics.setColor(colors["white"])
+    love.graphics.setColor(colors["slategrey"])
     -- HUD
     love.graphics.setFont(scoreFont)
     love.graphics.print("Score: "..state.score, love.graphics.getWidth()/2 - scoreFont:getWidth("Score: "..state.score)/2, 10)
